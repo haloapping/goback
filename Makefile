@@ -2,61 +2,57 @@
 include .env
 export $(shell sed 's/=.*//' .env)
 
-# === CONFIG ===
+# ===== GOOSE DATABASE MIGRATIONS ===== #
 MIGRATIONS_DIR=./db/migration
 DB_DRIVER=postgres
 DB_URL=postgres://postgres:$(DB_USER)@$(DB_HOST):$(DB_PORT)/$(DB_NAME)?sslmode=$(DB_SSL_MODE)
 
-# === USAGE ===
-# make create name=create_users_table
-# make up
-# make down
-# make redo
-# make reset
-# make status
-# make version
-# make up-to version=20240614120000
-# make down-to version=20240614120000
-# make fix
-
-# === COMMANDS ===
-
-# Create new migration
+# create new migration
+# usage: make create name=create_users_table
 create:
 	goose -dir $(MIGRATIONS_DIR) create $(name) sql
 
-# Apply all up migrations
+# apply all up migrations
+# usage: make up
 up:
 	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" up
 
-# Rollback the last migration
+# rollback the last migration
+# usage: make down
 down:
 	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" down
 
-# Redo last migration (down + up)
+# redo last migration (down + up)
+# usage: make redo
 redo:
 	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" redo
 
-# Reset all (down all, then up all)
+# reset all (down all, then up all)
+# usage: make reset
 reset:
 	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" reset
 
-# Print current DB version
+# print current DB version
+# usage: make version
 version:
 	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" version
 
-# Show all migration status
+# show all migration status
+# usage: make status
 status:
 	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" status
 
-# Migrate up to a specific version
+# migrate up to a specific version
+# usage: make up-to version=20240614120000
 up-to:
 	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" up-to $(version)
 
-# Migrate down to a specific version
+# migrate down to a specific version
+# usage: make down-to version=20240614120000
 down-to:
 	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" down-to $(version)
 
-# Fix goose migration numbering if out of sync
+# fix goose migration numbering if out of sync
+# usage: make fix
 fix:
 	goose -dir $(MIGRATIONS_DIR) fix

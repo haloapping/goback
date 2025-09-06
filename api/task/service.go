@@ -1,6 +1,8 @@
 package task
 
-import "github.com/labstack/echo/v4"
+import (
+	"github.com/labstack/echo/v4"
+)
 
 type Service struct {
 	Repository
@@ -13,55 +15,55 @@ func NewService(r Repository) Service {
 }
 
 func (s *Service) Add(c echo.Context, req AddReq) (Task, error) {
-	res, err := s.Repository.Add(c, req)
+	item, err := s.Repository.Add(c, req)
 	if err != nil {
 		return Task{}, err
 	}
 
-	return res, nil
+	return item, nil
 }
 
 func (s *Service) FindById(c echo.Context, id string) (Task, error) {
-	res, err := s.Repository.FindById(c, id)
+	item, err := s.Repository.FindById(c, id)
 	if err != nil {
 		return Task{}, err
 	}
 
-	return res, nil
+	return item, nil
 }
 
-func (s *Service) FindByUserId(c echo.Context, id string) ([]UserTask, error) {
-	res, err := s.Repository.FindAllTasksByUserId(c, id)
+func (s *Service) FindAllByUserId(c echo.Context, id string, limit int, offset int) (ut []UserTask, err error) {
+	item, err := s.Repository.FindAllByUserId(c, id, limit, offset)
 	if err != nil {
 		return []UserTask{}, err
 	}
 
-	return res, nil
+	return item, nil
 }
 
-func (s *Service) FindAll(c echo.Context) ([]Task, error) {
-	res, err := s.Repository.FindAll(c)
+func (s *Service) FindAll(c echo.Context, limit int, offset int) (t []Task, err error) {
+	items, err := s.Repository.FindAll(c, limit, offset)
 	if err != nil {
 		return []Task{}, err
 	}
 
-	return res, nil
+	return items, nil
 }
 
 func (s *Service) UpdateById(c echo.Context, id string, req UpdateReq) (Task, error) {
-	res, err := s.Repository.UpdateById(c, id, req)
+	item, err := s.Repository.UpdateById(c, id, req)
 	if err != nil {
 		return Task{}, err
 	}
 
-	return res, nil
+	return item, nil
 }
 
 func (s *Service) DeleteById(c echo.Context, id string) (Task, error) {
-	res, err := s.Repository.DeleteById(c, id)
+	item, err := s.Repository.DeleteById(c, id)
 	if err != nil {
 		return Task{}, err
 	}
 
-	return res, nil
+	return item, nil
 }

@@ -28,7 +28,6 @@ import (
 //	@contact.email	haloapping@gmail.com
 
 // @BasePath	/
-// @openapi	3.0.3
 func main() {
 	// Open file for logging
 	logFile, err := os.OpenFile("app.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0666)

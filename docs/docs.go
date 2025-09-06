@@ -22,7 +22,7 @@ const docTemplate = `{
     "paths": {
         "/tasks": {
             "get": {
-                "description": "Find all tasks by task id",
+                "description": "Find all tasks",
                 "consumes": [
                     "application/json"
                 ],
@@ -32,12 +32,30 @@ const docTemplate = `{
                 "tags": [
                     "tasks"
                 ],
-                "summary": "Find all tasks by task id",
+                "summary": "Find all tasks",
+                "parameters": [
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 15,
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.SingleDataResp-task_Task"
+                            "$ref": "#/definitions/api.MultipleDataResp-task_Task"
                         }
                     }
                 }
@@ -95,13 +113,29 @@ const docTemplate = `{
                         "name": "id",
                         "in": "path",
                         "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 15,
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
                     }
                 ],
                 "responses": {
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.SingleDataResp-task_Task"
+                            "$ref": "#/definitions/api.MultipleDataResp-task_Task"
                         }
                     }
                 }
@@ -278,47 +312,112 @@ const docTemplate = `{
         }
     },
     "definitions": {
+        "api.MultipleDataResp-task_Task": {
+            "type": "object",
+            "required": [
+                "data",
+                "message",
+                "totalItem"
+            ],
+            "properties": {
+                "message": {
+                    "type": "string",
+                    "x-order": "1"
+                },
+                "totalItem": {
+                    "type": "integer",
+                    "x-order": "2"
+                },
+                "data": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/task.Task"
+                    },
+                    "x-order": "3"
+                }
+            }
+        },
         "api.SingleDataResp-task_Task": {
             "type": "object",
+            "required": [
+                "data",
+                "message"
+            ],
             "properties": {
-                "data": {
-                    "$ref": "#/definitions/task.Task"
-                },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "x-order": "1"
+                },
+                "data": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/task.Task"
+                        }
+                    ],
+                    "x-order": "2"
                 }
             }
         },
         "api.SingleDataResp-user_UserBiodata": {
             "type": "object",
+            "required": [
+                "data",
+                "message"
+            ],
             "properties": {
-                "data": {
-                    "$ref": "#/definitions/user.UserBiodata"
-                },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "x-order": "1"
+                },
+                "data": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/user.UserBiodata"
+                        }
+                    ],
+                    "x-order": "2"
                 }
             }
         },
         "api.SingleDataResp-user_UserLogin": {
             "type": "object",
+            "required": [
+                "data",
+                "message"
+            ],
             "properties": {
-                "data": {
-                    "$ref": "#/definitions/user.UserLogin"
-                },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "x-order": "1"
+                },
+                "data": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/user.UserLogin"
+                        }
+                    ],
+                    "x-order": "2"
                 }
             }
         },
         "api.SingleDataResp-user_UserRegister": {
             "type": "object",
+            "required": [
+                "data",
+                "message"
+            ],
             "properties": {
-                "data": {
-                    "$ref": "#/definitions/user.UserRegister"
-                },
                 "message": {
-                    "type": "string"
+                    "type": "string",
+                    "x-order": "1"
+                },
+                "data": {
+                    "allOf": [
+                        {
+                            "$ref": "#/definitions/user.UserRegister"
+                        }
+                    ],
+                    "x-order": "2"
                 }
             }
         },

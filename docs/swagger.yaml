@@ -1,32 +1,74 @@
 basePath: /
 definitions:
+  api.MultipleDataResp-task_Task:
+    properties:
+      data:
+        items:
+          $ref: '#/definitions/task.Task'
+        type: array
+        x-order: "3"
+      message:
+        type: string
+        x-order: "1"
+      totalItem:
+        type: integer
+        x-order: "2"
+    required:
+    - data
+    - message
+    - totalItem
+    type: object
   api.SingleDataResp-task_Task:
     properties:
       data:
-        $ref: '#/definitions/task.Task'
+        allOf:
+        - $ref: '#/definitions/task.Task'
+        x-order: "2"
       message:
         type: string
+        x-order: "1"
+    required:
+    - data
+    - message
     type: object
   api.SingleDataResp-user_UserBiodata:
     properties:
       data:
-        $ref: '#/definitions/user.UserBiodata'
+        allOf:
+        - $ref: '#/definitions/user.UserBiodata'
+        x-order: "2"
       message:
         type: string
+        x-order: "1"
+    required:
+    - data
+    - message
     type: object
   api.SingleDataResp-user_UserLogin:
     properties:
       data:
-        $ref: '#/definitions/user.UserLogin'
+        allOf:
+        - $ref: '#/definitions/user.UserLogin'
+        x-order: "2"
       message:
         type: string
+        x-order: "1"
+    required:
+    - data
+    - message
     type: object
   api.SingleDataResp-user_UserRegister:
     properties:
       data:
-        $ref: '#/definitions/user.UserRegister'
+        allOf:
+        - $ref: '#/definitions/user.UserRegister'
+        x-order: "2"
       message:
         type: string
+        x-order: "1"
+    required:
+    - data
+    - message
     type: object
   task.AddReq:
     properties:
@@ -175,15 +217,28 @@ paths:
     get:
       consumes:
       - application/json
-      description: Find all tasks by task id
+      description: Find all tasks
+      parameters:
+      - default: 1
+        description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      - default: 15
+        description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/api.SingleDataResp-task_Task'
-      summary: Find all tasks by task id
+            $ref: '#/definitions/api.MultipleDataResp-task_Task'
+      summary: Find all tasks
       tags:
       - tasks
     post:
@@ -238,13 +293,25 @@ paths:
         name: id
         required: true
         type: string
+      - default: 1
+        description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      - default: 15
+        description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/api.SingleDataResp-task_Task'
+            $ref: '#/definitions/api.MultipleDataResp-task_Task'
       summary: Find all tasks by user id
       tags:
       - tasks

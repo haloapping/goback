@@ -2,6 +2,7 @@ package task
 
 import (
 	"net/http"
+	"strconv"
 
 	"github.com/goback/api"
 	"github.com/labstack/echo/v4"
@@ -135,26 +136,60 @@ func (h *Handler) FindById(c echo.Context) error {
 //	@Accept			json
 //	@Produce		json
 //	@Param			id				path		string	true	"user id"
-//	@Success		200				{object}	api.SingleDataResp[Task]
+//	@Param			offset			query		int		true	"offset"	default(1)
+//	@Param			limit			query		int		true	"limit"		default(15)
+//	@Success		200				{object}	api.MultipleDataResp[Task]
 //	@Router			/tasks/{id} 	[get]
-func (h *Handler) FindByUserId(c echo.Context) error {
+func (h *Handler) FindAllByUserId(c echo.Context) error {
+	validationErr := make(map[string][]string)
+
 	id := c.Param("id")
 	if id == "{id}" {
-		validation := map[string][]string{
-			"id": {"cannot empty"},
-		}
+		validationErr["id"] = append(validationErr["id"], "cannot empty")
+	}
 
-		zlog.Info().Interface("validation", validation).Msg("validation")
+	offsetStr := c.QueryParam("offset")
+	if offsetStr == "" {
+		validationErr["offset"] = append(validationErr["offset"], "cannot empty")
+	}
+
+	limitStr := c.QueryParam("limit")
+	if limitStr == "" {
+		validationErr["limit"] = append(validationErr["limit"], "cannot empty")
+	}
+
+	if len(validationErr) > 0 {
+		zlog.Info().Interface("validation", validationErr).Msg("validation")
 
 		return c.JSON(
 			http.StatusBadRequest,
 			api.ValidationResp{
-				Validation: validation,
+				Validation: validationErr,
 			},
 		)
 	}
 
-	data, err := h.Service.FindByUserId(c, id)
+	offset, err := strconv.Atoi(offsetStr)
+	if err != nil {
+		return c.JSON(
+			http.StatusBadRequest,
+			api.ErrorResp{
+				Error: err.Error(),
+			},
+		)
+	}
+
+	limit, err := strconv.Atoi(limitStr)
+	if err != nil {
+		return c.JSON(
+			http.StatusBadRequest,
+			api.ErrorResp{
+				Error: err.Error(),
+			},
+		)
+	}
+
+	data, err := h.Service.FindAllByUserId(c, id, limit, offset)
 	if err != nil {
 		zlog.Error().Msg(err.Error())
 
@@ -171,23 +206,69 @@ func (h *Handler) FindByUserId(c echo.Context) error {
 	return c.JSON(
 		http.StatusCreated,
 		api.MultipleDataResp[UserTask]{
-			Message: "Success to retrieve task by user id",
-			Data:    data,
+			Message:   "Success to retrieve task by user id",
+			TotalItem: limit,
+			Data:      data,
 		},
 	)
 }
 
-// Find all tasks by task id
+// Find all tasks
 //
-//	@Summary		Find all tasks by task id
-//	@Description	Find all tasks by task id
+//	@Summary		Find all tasks
+//	@Description	Find all tasks
 //	@Tags			tasks
 //	@Accept			json
 //	@Produce		json
-//	@Success		200			{object}	api.SingleDataResp[Task]
+//	@Param			offset		query		int	true	"offset"	default(1)
+//	@Param			limit		query		int	true	"limit"		default(15)
+//	@Success		200			{object}	api.MultipleDataResp[Task]
 //	@Router			/tasks   	[get]
 func (h *Handler) FindAll(c echo.Context) error {
-	data, err := h.Service.FindAll(c)
+	validationErr := make(map[string][]string)
+
+	offsetStr := c.QueryParam("offset")
+	if offsetStr == "" {
+		validationErr["offset"] = append(validationErr["offset"], "cannot empty")
+	}
+
+	limitStr := c.QueryParam("limit")
+	if limitStr == "" {
+		validationErr["limit"] = append(validationErr["limit"], "cannot empty")
+	}
+
+	if len(validationErr) > 0 {
+		zlog.Info().Interface("validation", validationErr).Msg("validation")
+
+		return c.JSON(
+			http.StatusBadRequest,
+			api.ValidationResp{
+				Validation: validationErr,
+			},
+		)
+	}
+
+	offset, err := strconv.Atoi(offsetStr)
+	if err != nil {
+		return c.JSON(
+			http.StatusBadRequest,
+			api.ErrorResp{
+				Error: err.Error(),
+			},
+		)
+	}
+
+	limit, err := strconv.Atoi(limitStr)
+	if err != nil {
+		return c.JSON(
+			http.StatusBadRequest,
+			api.ErrorResp{
+				Error: err.Error(),
+			},
+		)
+	}
+
+	items, err := h.Service.FindAll(c, limit, offset)
 	if err != nil {
 		zlog.Error().Msg(err.Error())
 
@@ -204,8 +285,9 @@ func (h *Handler) FindAll(c echo.Context) error {
 	return c.JSON(
 		http.StatusCreated,
 		api.MultipleDataResp[Task]{
-			Message: "Success to retrieve all tasks",
-			Data:    data,
+			Message:   "Success to retrieve all tasks",
+			TotalItem: limit,
+			Data:      items,
 		},
 	)
 }

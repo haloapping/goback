@@ -72,7 +72,7 @@ func (r *Repository) FindById(c echo.Context, id string) (Task, error) {
 	return t, nil
 }
 
-func (r *Repository) FindAllTasksByUserId(c echo.Context, id string) ([]UserTask, error) {
+func (r *Repository) FindAllByUserId(c echo.Context, id string, limit int, offset int) (ut []UserTask, err error) {
 	ctx := c.Request().Context()
 	tx, err := r.Pool.Begin(ctx)
 	if err != nil {
@@ -82,7 +82,7 @@ func (r *Repository) FindAllTasksByUserId(c echo.Context, id string) ([]UserTask
 	}
 
 	q := `
-		SELECT COUNT(*) FROM tasks t 
+		SELECT COUNT(t.id) FROM tasks t 
 		LEFT JOIN users u ON t.user_id = u.id
 		WHERE u.id = $1;
 	`
@@ -94,14 +94,19 @@ func (r *Repository) FindAllTasksByUserId(c echo.Context, id string) ([]UserTask
 
 		return []UserTask{}, err
 	}
+	if count == 0 {
+		return []UserTask{}, nil
+	}
 
 	q = `
 		SELECT t.id, t.title, t.description, t.created_at, t.updated_at FROM tasks t 
 		LEFT JOIN users u ON t.user_id = u.id
-		WHERE u.id = $1;
+		WHERE u.id = $1
+		LIMIT $2
+		OFFSET $3;
 	`
-	rows, err := tx.Query(ctx, q, id)
-	rowNum := 0
+	rows, err := tx.Query(ctx, q, id, limit, offset)
+	idx := 0
 	userTasks := make([]UserTask, count)
 	for rows.Next() {
 		var t UserTask
@@ -111,15 +116,15 @@ func (r *Repository) FindAllTasksByUserId(c echo.Context, id string) ([]UserTask
 
 			return []UserTask{}, err
 		}
-		userTasks[rowNum] = t
-		rowNum++
+		userTasks[idx] = t
+		idx++
 	}
 	tx.Commit(ctx)
 
 	return userTasks, nil
 }
 
-func (r *Repository) FindAll(c echo.Context) ([]Task, error) {
+func (r *Repository) FindAll(c echo.Context, limit int, offset int) (t []Task, err error) {
 	ctx := c.Request().Context()
 	tx, err := r.Pool.Begin(ctx)
 	if err != nil {
@@ -129,7 +134,8 @@ func (r *Repository) FindAll(c echo.Context) ([]Task, error) {
 	}
 
 	q := `
-		SELECT COUNT(*) FROM tasks;
+		SELECT COUNT(id)
+		FROM tasks;
 	`
 	row := tx.QueryRow(ctx, q)
 	var count int
@@ -141,25 +147,27 @@ func (r *Repository) FindAll(c echo.Context) ([]Task, error) {
 	}
 
 	q = `
-		SELECT * FROM tasks;
+		SELECT * FROM tasks
+		LIMIT $1
+		OFFSET $2;
 	`
-	rows, err := tx.Query(ctx, q)
-	rowNum := 0
-	tasks := make([]Task, count)
+	rows, err := tx.Query(ctx, q, limit, offset)
+	idx := 0
+	items := make([]Task, count)
 	for rows.Next() {
-		var t Task
-		rows.Scan(&t.Id, &t.UserId, &t.Title, &t.Description, &t.CreatedAt, &t.UpdatedAt)
+		var item Task
+		rows.Scan(&item.Id, &item.UserId, &item.Title, &item.Description, &item.CreatedAt, &item.UpdatedAt)
 		if err != nil {
 			tx.Rollback(ctx)
 
 			return []Task{}, err
 		}
-		tasks[rowNum] = t
-		rowNum++
+		items[idx] = item
+		idx++
 	}
 	tx.Commit(ctx)
 
-	return tasks, nil
+	return items, nil
 }
 
 func (r *Repository) UpdateById(c echo.Context, id string, req UpdateReq) (Task, error) {

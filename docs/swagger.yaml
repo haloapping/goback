@@ -1,0 +1,342 @@
+basePath: /
+definitions:
+  api.SingleDataResp-task_Task:
+    properties:
+      data:
+        $ref: '#/definitions/task.Task'
+      message:
+        type: string
+    type: object
+  api.SingleDataResp-user_UserBiodata:
+    properties:
+      data:
+        $ref: '#/definitions/user.UserBiodata'
+      message:
+        type: string
+    type: object
+  api.SingleDataResp-user_UserLogin:
+    properties:
+      data:
+        $ref: '#/definitions/user.UserLogin'
+      message:
+        type: string
+    type: object
+  api.SingleDataResp-user_UserRegister:
+    properties:
+      data:
+        $ref: '#/definitions/user.UserRegister'
+      message:
+        type: string
+    type: object
+  task.AddReq:
+    properties:
+      description:
+        type: string
+        x-order: "3"
+      title:
+        type: string
+        x-order: "2"
+      userId:
+        type: string
+        x-order: "1"
+    required:
+    - description
+    - title
+    - userId
+    type: object
+  task.Task:
+    properties:
+      createdAt:
+        type: string
+        x-order: "5"
+      description:
+        type: string
+        x-order: "4"
+      id:
+        type: string
+        x-order: "1"
+      title:
+        type: string
+        x-order: "3"
+      updatedAt:
+        type: string
+        x-order: "6"
+      userId:
+        type: string
+        x-order: "2"
+    required:
+    - createdAt
+    - description
+    - id
+    - title
+    - updatedAt
+    - userId
+    type: object
+  task.UpdateReq:
+    properties:
+      description:
+        type: string
+        x-order: "2"
+      title:
+        type: string
+        x-order: "1"
+    required:
+    - description
+    - title
+    type: object
+  user.UserBiodata:
+    properties:
+      createdAt:
+        type: string
+        x-order: "3"
+      id:
+        type: string
+        x-order: "1"
+      updatedAt:
+        type: string
+        x-order: "4"
+      username:
+        type: string
+        x-order: "2"
+    required:
+    - createdAt
+    - id
+    - updatedAt
+    - username
+    type: object
+  user.UserLogin:
+    properties:
+      token:
+        type: string
+        x-order: "1"
+    type: object
+  user.UserLoginReq:
+    properties:
+      password:
+        type: string
+        x-order: "2"
+      username:
+        type: string
+        x-order: "1"
+    required:
+    - password
+    - username
+    type: object
+  user.UserRegister:
+    properties:
+      createdAt:
+        type: string
+        x-order: "3"
+      id:
+        example: DSFSGGRRG
+        type: string
+        x-order: "1"
+      updatedAt:
+        type: string
+        x-order: "4"
+      username:
+        type: string
+        x-order: "2"
+    required:
+    - createdAt
+    - id
+    - updatedAt
+    - username
+    type: object
+  user.UserRegisterReq:
+    properties:
+      confirmPassword:
+        type: string
+        x-order: "3"
+      password:
+        description: minimal length is 8, minimal 1 uppercase, minimal 1 lowercase,
+          minimal 1 digit and minimal 1 punctuation
+        type: string
+        x-order: "2"
+      username:
+        type: string
+        x-order: "1"
+    required:
+    - confirmPassword
+    - password
+    - username
+    type: object
+info:
+  contact:
+    email: haloapping@gmail.com
+    name: Alfiyanto Kondolele
+    url: https://haloapping.com
+  description: Goback API
+  termsOfService: http://swagger.io/terms/
+  title: Goback API
+  version: "1.0"
+paths:
+  /tasks:
+    get:
+      consumes:
+      - application/json
+      description: Find all tasks by task id
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.SingleDataResp-task_Task'
+      summary: Find all tasks by task id
+      tags:
+      - tasks
+    post:
+      consumes:
+      - application/json
+      description: Add new task
+      parameters:
+      - description: Add request
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/task.AddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.SingleDataResp-task_Task'
+      summary: Add new task
+      tags:
+      - tasks
+  /tasks/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: Delete task by id
+      parameters:
+      - description: task id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.SingleDataResp-task_Task'
+      summary: Delete task by id
+      tags:
+      - tasks
+    get:
+      consumes:
+      - application/json
+      description: Find all tasks by user id
+      parameters:
+      - description: user id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.SingleDataResp-task_Task'
+      summary: Find all tasks by user id
+      tags:
+      - tasks
+    patch:
+      consumes:
+      - application/json
+      description: Update task by id
+      parameters:
+      - description: task id
+        in: path
+        name: id
+        required: true
+        type: string
+      - description: Update request
+        in: body
+        name: task
+        required: true
+        schema:
+          $ref: '#/definitions/task.UpdateReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.SingleDataResp-task_Task'
+      summary: Update task by id
+      tags:
+      - tasks
+  /users/biodata/{id}:
+    get:
+      consumes:
+      - application/json
+      description: Find biodata of user by id
+      parameters:
+      - description: biodata of user id
+        in: path
+        name: id
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.SingleDataResp-user_UserBiodata'
+      summary: Find biodata of user by id
+      tags:
+      - users
+  /users/login:
+    post:
+      consumes:
+      - application/json
+      description: Login user
+      parameters:
+      - description: Login user request
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/user.UserLoginReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.SingleDataResp-user_UserLogin'
+      summary: Login user
+      tags:
+      - users
+  /users/register:
+    post:
+      consumes:
+      - application/json
+      description: Register user
+      parameters:
+      - description: Register user request
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/user.UserRegisterReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.SingleDataResp-user_UserRegister'
+      summary: Register user
+      tags:
+      - users
+swagger: "2.0"

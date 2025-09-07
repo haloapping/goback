@@ -65,7 +65,7 @@ func main() {
 		stdlog.Fatal("Error loading .env file")
 	}
 
-	connString := fmt.Sprintf(
+	connStr := fmt.Sprintf(
 		"postgres://%s:%s@%s:%s/%s?sslmode=%s",
 		os.Getenv("DB_USER"),
 		os.Getenv("DB_PASSWORD"),
@@ -74,7 +74,7 @@ func main() {
 		os.Getenv("DB_NAME"),
 		os.Getenv("DB_SSLMODE"),
 	)
-	pool := db.NewConnection(connString)
+	pool := db.NewConnection(connStr)
 	if err != nil {
 		panic(err)
 	}

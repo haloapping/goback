@@ -22,7 +22,7 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	connString := fmt.Sprintf(
+	connStr := fmt.Sprintf(
 		"postgres://%s:%s@%s:%s/%s?sslmode=%s",
 		os.Getenv("DB_USER"),
 		os.Getenv("DB_PASSWORD"),
@@ -31,7 +31,7 @@ func main() {
 		os.Getenv("DB_NAME"),
 		os.Getenv("DB_SSLMODE"),
 	)
-	pool := db.NewConnection(connString)
+	pool := db.NewConnection(connStr)
 	if err != nil {
 		panic(err)
 	}
@@ -46,7 +46,8 @@ func main() {
 func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask int) error {
 	// Batch insert users
 	userBatch := &pgx.Batch{}
-	userIdxs := make([]string, 0, nUser)
+	idx := 0
+	userIdxs := make([]string, nUser)
 	for range nUser {
 		id := ulid.Make().String()
 		username := gofakeit.Username()
@@ -58,7 +59,8 @@ func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask 
 			`INSERT INTO users(id, username, password) VALUES($1, $2, $3) RETURNING id;`,
 			id, username, string(hashPassword),
 		)
-		userIdxs = append(userIdxs, id)
+		userIdxs[idx] = id
+		idx++
 	}
 
 	userResults := pool.SendBatch(ctx, userBatch)
@@ -66,6 +68,7 @@ func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask 
 		var id string
 		if err := userResults.QueryRow().Scan(&id); err != nil {
 			userResults.Close()
+
 			return err
 		}
 	}

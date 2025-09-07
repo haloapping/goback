@@ -2,12 +2,11 @@ package main
 
 import (
 	"context"
-	"fmt"
 	"log"
 	"math/rand/v2"
-	"os"
 
 	"github.com/brianvoe/gofakeit/v7"
+	"github.com/goback/config"
 	"github.com/goback/db"
 	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -22,15 +21,7 @@ func main() {
 		log.Fatal("Error loading .env file")
 	}
 
-	connStr := fmt.Sprintf(
-		"postgres://%s:%s@%s:%s/%s?sslmode=%s",
-		os.Getenv("DB_USER"),
-		os.Getenv("DB_PASSWORD"),
-		os.Getenv("DB_HOST"),
-		os.Getenv("DB_PORT"),
-		os.Getenv("DB_NAME"),
-		os.Getenv("DB_SSLMODE"),
-	)
+	connStr := config.DBConnStr(".env")
 	pool := db.NewConnection(connStr)
 	if err != nil {
 		panic(err)
@@ -62,17 +53,13 @@ func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask 
 		userIdxs[idx] = id
 		idx++
 	}
-
 	userResults := pool.SendBatch(ctx, userBatch)
-	for range nUser {
-		var id string
-		if err := userResults.QueryRow().Scan(&id); err != nil {
-			userResults.Close()
-
-			return err
-		}
+	_, err := userResults.Exec()
+	if err != nil {
+		return err
 	}
-	if err := userResults.Close(); err != nil {
+	err = userResults.Close()
+	if err != nil {
 		return err
 	}
 
@@ -86,16 +73,13 @@ func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask 
 			id, userIdxs[randomUserIdx], gofakeit.Sentence(3), gofakeit.Sentence(15),
 		)
 	}
-
 	taskResults := pool.SendBatch(ctx, taskBatch)
-	for range nTask {
-		var id string
-		if err := taskResults.QueryRow().Scan(&id); err != nil {
-			taskResults.Close()
-			return err
-		}
+	_, err = taskResults.Exec()
+	if err != nil {
+		return err
 	}
-	if err := taskResults.Close(); err != nil {
+	err = taskResults.Close()
+	if err != nil {
 		return err
 	}
 

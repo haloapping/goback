@@ -1,205 +1,23 @@
-{"level":"info","time":"2025-09-06T08:40:52+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T08:41:01+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T08:41:14+07:00","message":"success to retrieve all tasks"}
-{"level":"info","validation":{"description":["cannot empty"],"title":["cannot empty"],"userId":["cannot empty"]},"time":"2025-09-06T09:49:26+07:00","message":"validation"}
-{"level":"info","validation":{"id":["cannot empty"]},"time":"2025-09-06T10:11:44+07:00","message":"validation"}
-{"level":"info","time":"2025-09-06T10:11:59+07:00","message":"success to retrieve all tasks"}
-{"level":"error","time":"2025-09-06T10:12:13+07:00","message":"expected 1 arguments, got 0"}
-{"level":"info","time":"2025-09-06T10:12:46+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:15:19+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:15:56+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:15:57+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:15:58+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:15:58+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:18:11+07:00","message":"success to retrieve all tasks"}
-{"level":"info","validation":{"id":["cannot empty"]},"time":"2025-09-06T10:18:17+07:00","message":"validation"}
-{"level":"info","time":"2025-09-06T10:18:37+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:19:32+07:00","message":"success to retrieve all tasks"}
-{"level":"info","validation":{"id":["cannot empty"]},"time":"2025-09-06T10:19:36+07:00","message":"validation"}
-{"level":"info","time":"2025-09-06T10:19:45+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:18+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:19+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:20+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:38+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:38+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:39+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:39+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:39+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:21:53+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:22:20+07:00","message":"user is registered"}
-{"level":"info","time":"2025-09-06T10:22:27+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:22:30+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:22:35+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:22:44+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:29:12+07:00","message":"task is created"}
-{"level":"info","time":"2025-09-06T10:29:17+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:29:27+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:29:31+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:39:14+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:39:15+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:39:15+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:39:16+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:39:16+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:39:16+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:39:16+07:00","message":"success to retrieve all tasks"}
-{"level":"error","time":"2025-09-06T10:39:18+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:39:19+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:39:35+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:40:04+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:40:49+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:40:50+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:40:50+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:40:50+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:41:58+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:41:59+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:41:59+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:00+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:00+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:00+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:00+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:00+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:00+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:01+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:05+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:05+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:06+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"info","time":"2025-09-06T10:42:32+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:42:32+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:42:32+07:00","message":"success to retrieve all tasks"}
-{"level":"error","time":"2025-09-06T10:42:44+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"error","time":"2025-09-06T10:42:58+07:00","message":"ERROR: column reference \"id\" is ambiguous (SQLSTATE 42702)"}
-{"level":"info","time":"2025-09-06T10:43:19+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:43:45+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T10:43:48+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:43:48+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:43:49+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T10:43:56+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T11:16:04+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T11:16:46+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T11:18:40+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T11:24:57+07:00","message":"success to retrieve all tasks"}
-{"level":"info","validation":{"id":["cannot empty"]},"time":"2025-09-06T11:28:10+07:00","message":"validation"}
-{"level":"info","time":"2025-09-06T11:28:13+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T11:30:36+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T11:30:38+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T11:30:38+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T11:30:38+07:00","message":"success to retrieve all tasks"}
-{"level":"error","time":"2025-09-06T12:30:49+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
-{"level":"error","time":"2025-09-06T12:32:34+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
-{"level":"error","time":"2025-09-06T12:32:37+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
-{"level":"error","time":"2025-09-06T12:32:38+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
-{"level":"error","time":"2025-09-06T12:32:38+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
-{"level":"error","time":"2025-09-06T12:32:38+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
-{"level":"info","time":"2025-09-06T12:33:37+07:00","message":"fake data is created"}
-{"level":"info","time":"2025-09-06T12:33:38+07:00","message":"fake data is created"}
-{"level":"info","time":"2025-09-06T12:33:38+07:00","message":"fake data is created"}
-{"level":"info","time":"2025-09-06T12:33:53+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T12:34:03+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T12:34:51+07:00","message":"fake data is created"}
-{"level":"info","time":"2025-09-06T12:36:49+07:00","message":"fake data is created"}
-{"level":"info","time":"2025-09-06T12:37:03+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T12:37:08+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T12:37:12+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T12:37:21+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T12:39:41+07:00","message":"fake data is created"}
-{"level":"info","time":"2025-09-06T13:26:07+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T13:51:55+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T13:52:26+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T15:30:55+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T15:51:08+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T15:53:19+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:30+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:31+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:32+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:32+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:58+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:59+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:59+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:59+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:57:59+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:58:00+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:58:00+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:58:00+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:58:00+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T15:58:00+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:01+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:02+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:02+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:02+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:03+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:03+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:03+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:03+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:03+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:24+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:00:43+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:01:29+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:01:36+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T16:01:44+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:03:31+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:03:41+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T16:03:41+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T20:03:32+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T20:12:18+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T20:14:41+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T20:15:03+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T20:26:05+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T20:34:25+07:00","message":"success to retrieve all tasks"}
-{"level":"info","validation":{"offset":["cannot empty"]},"time":"2025-09-06T20:40:40+07:00","message":"validation"}
-{"level":"info","validation":{"offset":["cannot empty","cannot empty"]},"time":"2025-09-06T20:43:47+07:00","message":"validation"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-06T20:44:00+07:00","message":"validation"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-06T20:44:36+07:00","message":"validation"}
-{"level":"info","time":"2025-09-06T20:44:44+07:00","message":"success to retrieve all tasks"}
-{"level":"info","validation":{"id":["cannot empty"],"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-06T20:49:05+07:00","message":"validation"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-06T20:49:33+07:00","message":"validation"}
-{"level":"info","time":"2025-09-06T20:49:39+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T20:49:47+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T20:53:54+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T20:57:22+07:00","message":"success to retrieve all tasks"}
-{"level":"error","time":"2025-09-06T20:57:35+07:00","message":"expected 1 arguments, got 0"}
-{"level":"info","time":"2025-09-06T20:57:50+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T20:58:05+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T20:59:42+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T20:59:42+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T20:59:43+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-06T21:00:11+07:00","message":"success to retrieve task by user id"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-06T23:51:19+07:00","message":"validation"}
-{"level":"info","time":"2025-09-06T23:51:23+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-06T23:51:36+07:00","message":"task is created"}
-{"level":"info","time":"2025-09-06T23:56:51+07:00","message":"task is created"}
-{"level":"info","time":"2025-09-06T23:57:19+07:00","message":"task is created"}
-{"level":"info","time":"2025-09-07T09:07:49+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T09:09:52+07:00","message":"success to retrieve all tasks"}
-{"level":"error","time":"2025-09-07T09:10:29+07:00","message":"no rows in result set"}
-{"level":"error","time":"2025-09-07T09:10:30+07:00","message":"no rows in result set"}
-{"level":"error","time":"2025-09-07T09:10:40+07:00","message":"no rows in result set"}
-{"level":"error","time":"2025-09-07T09:10:41+07:00","message":"no rows in result set"}
-{"level":"error","time":"2025-09-07T09:10:41+07:00","message":"no rows in result set"}
-{"level":"info","time":"2025-09-07T09:18:02+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T09:18:33+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T09:18:33+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T09:21:01+07:00","message":"success to retrieve all tasks"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T09:21:13+07:00","message":"validation"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T09:24:28+07:00","message":"validation"}
-{"level":"info","time":"2025-09-07T09:24:34+07:00","message":"success to retrieve task by user id"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T09:26:42+07:00","message":"validation"}
-{"level":"info","time":"2025-09-07T09:26:46+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-07T09:29:20+07:00","message":"success to retrieve task by user id"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T09:49:11+07:00","message":"validation"}
-{"level":"info","time":"2025-09-07T09:49:17+07:00","message":"success to retrieve task by user id"}
-{"level":"info","time":"2025-09-07T12:05:28+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:05:44+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:34+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:35+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:36+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:36+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:36+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:36+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
-{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
-{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T12:10:47+07:00","message":"validation"}
-{"level":"info","time":"2025-09-07T12:10:51+07:00","message":"success to retrieve task by user id"}
+{"level":"info","time":"2025-09-07T14:30:26+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T14:30:26+07:00","message":"success to retrieve all tasks"}
+{"level":"error","time":"2025-09-07T14:31:36+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"info","time":"2025-09-07T14:32:10+07:00","message":"success to retrieve all tasks"}
+{"level":"error","time":"2025-09-07T14:32:16+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"error","time":"2025-09-07T14:32:17+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"error","time":"2025-09-07T14:32:17+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"error","time":"2025-09-07T14:32:17+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"error","time":"2025-09-07T14:32:17+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"error","time":"2025-09-07T14:32:17+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"error","time":"2025-09-07T14:32:17+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"error","time":"2025-09-07T14:32:18+07:00","message":"ERROR: insert or update on table \"tasks\" violates foreign key constraint \"tasks_user_id_fkey\" (SQLSTATE 23503)"}
+{"level":"info","time":"2025-09-07T14:33:03+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T14:33:04+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T14:33:04+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T14:33:09+07:00","message":"task is created"}
+{"level":"error","time":"2025-09-07T14:36:36+07:00","message":"ERROR: duplicate key value violates unique constraint \"tasks_title_key\" (SQLSTATE 23505)"}
+{"level":"info","time":"2025-09-07T14:36:47+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T14:36:49+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T14:36:54+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T14:42:31+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T14:42:39+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T14:42:43+07:00","message":"success to retrieve all tasks"}

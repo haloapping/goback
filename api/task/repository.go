@@ -40,6 +40,21 @@ func (r *Repository) Add(c echo.Context, req AddReq) (Task, error) {
 		return Task{}, err
 	}
 
+	q = `
+		INSERT INTO task_summaries(id, user_id, task_count)
+		VALUES($1, $2, 1)
+		ON CONFLICT(user_id)
+		DO UPDATE SET
+			task_count = task_summaries.task_count + 1,
+			updated_at = NOW();
+	`
+	_, err = tx.Exec(ctx, q, ulid.Make().String(), req.UserId)
+	if err != nil {
+		tx.Rollback(ctx)
+
+		return Task{}, err
+	}
+
 	tx.Commit(ctx)
 
 	return t, nil

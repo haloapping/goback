@@ -21,3 +21,35 @@
 {"level":"info","time":"2025-09-07T14:42:31+07:00","message":"success to retrieve all tasks"}
 {"level":"info","time":"2025-09-07T14:42:39+07:00","message":"success to retrieve all tasks"}
 {"level":"info","time":"2025-09-07T14:42:43+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T17:03:15+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T17:03:15+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T17:03:16+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T18:49:01+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T18:53:18+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T19:01:57+07:00","message":"task is created"}
+{"level":"error","time":"2025-09-07T19:02:18+07:00","message":"ERROR: duplicate key value violates unique constraint \"tasks_title_key\" (SQLSTATE 23505)"}
+{"level":"info","time":"2025-09-07T19:02:28+07:00","message":"task is created"}
+{"level":"error","time":"2025-09-07T19:03:20+07:00","message":"ERROR: duplicate key value violates unique constraint \"tasks_title_key\" (SQLSTATE 23505)"}
+{"level":"info","time":"2025-09-07T19:03:23+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T19:09:21+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T19:29:45+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T19:31:06+07:00","message":"task is created"}
+{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T20:21:59+07:00","message":"validation"}
+{"level":"info","time":"2025-09-07T20:22:04+07:00","message":"success to retrieve all tasks"}
+{"level":"error","time":"2025-09-07T20:22:21+07:00","message":"ERROR: syntax error at or near \"UPDATE\" (SQLSTATE 42601)"}
+{"level":"error","time":"2025-09-07T20:22:57+07:00","message":"ERROR: syntax error at or near \"UPDATE\" (SQLSTATE 42601)"}
+{"level":"error","time":"2025-09-07T20:24:33+07:00","message":"ERROR: syntax error at or near \"updated_at\" (SQLSTATE 42601)"}
+{"level":"error","time":"2025-09-07T20:25:00+07:00","message":"ERROR: syntax error at or near \"updated_at\" (SQLSTATE 42601)"}
+{"level":"info","time":"2025-09-07T20:25:19+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T20:25:31+07:00","message":"task is created"}
+{"level":"error","time":"2025-09-07T20:27:26+07:00","message":"ERROR: duplicate key value violates unique constraint \"tasks_title_key\" (SQLSTATE 23505)"}
+{"level":"info","time":"2025-09-07T20:27:29+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T20:27:38+07:00","message":"task is created"}
+{"level":"error","time":"2025-09-07T20:27:57+07:00","message":"ERROR: duplicate key value violates unique constraint \"tasks_title_key\" (SQLSTATE 23505)"}
+{"level":"error","time":"2025-09-07T20:28:04+07:00","message":"ERROR: syntax error at or near \"SELECT\" (SQLSTATE 42601)"}
+{"level":"error","time":"2025-09-07T20:28:04+07:00","message":"ERROR: syntax error at or near \"SELECT\" (SQLSTATE 42601)"}
+{"level":"info","time":"2025-09-07T20:28:32+07:00","message":"task is created"}
+{"level":"error","time":"2025-09-07T20:35:15+07:00","message":"ERROR: duplicate key value violates unique constraint \"tasks_title_key\" (SQLSTATE 23505)"}
+{"level":"info","time":"2025-09-07T20:35:18+07:00","message":"task is created"}
+{"level":"error","time":"2025-09-07T20:36:29+07:00","message":"ERROR: duplicate key value violates unique constraint \"tasks_title_key\" (SQLSTATE 23505)"}
+{"level":"info","time":"2025-09-07T20:36:35+07:00","message":"task is created"}

@@ -42,7 +42,7 @@ func main() {
 func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask int) error {
 	// Batch insert users
 	userBatch := &pgx.Batch{}
-	idx := 0
+	userIdx := 0
 	userIdxs := make([]string, nUser)
 	for range nUser {
 		id := ulid.Make().String()
@@ -55,8 +55,8 @@ func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask 
 			`INSERT INTO users(id, username, password) VALUES($1, $2, $3) RETURNING id;`,
 			id, username, string(hashPassword),
 		)
-		userIdxs[idx] = id
-		idx++
+		userIdxs[userIdx] = id
+		userIdx++
 	}
 	userResults := pool.SendBatch(ctx, userBatch)
 	_, err := userResults.Exec()
@@ -70,13 +70,17 @@ func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask 
 
 	// Batch insert tasks
 	taskBatch := &pgx.Batch{}
+	taskIdx := 0
+	taskIdxs := make([]string, nTask)
 	for range nTask {
 		id := ulid.Make().String()
-		randomUserIdx := rand.IntN(len(userIdxs))
+		randomUserIdx := rand.IntN(len(taskIdxs))
 		taskBatch.Queue(
 			`INSERT INTO tasks(id, user_id, title, description) VALUES($1, $2, $3, $4) RETURNING id;`,
 			id, userIdxs[randomUserIdx], gofakeit.Sentence(3), gofakeit.Sentence(15),
 		)
+		taskIdxs[taskIdx] = id
+		taskIdx++
 	}
 	taskResults := pool.SendBatch(ctx, taskBatch)
 	_, err = taskResults.Exec()
@@ -84,6 +88,27 @@ func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask 
 		return err
 	}
 	err = taskResults.Close()
+	if err != nil {
+		return err
+	}
+
+	// Batch insert task summaries
+	taskSummaryBatch := &pgx.Batch{}
+	userIdx = 0
+	for range nUser {
+		id := ulid.Make().String()
+		taskSummaryBatch.Queue(
+			`INSERT INTO task_summaries(id, user_id) VALUES($1, $2);`,
+			id, userIdxs[userIdx],
+		)
+		userIdx++
+	}
+	taskSummaryResults := pool.SendBatch(ctx, taskSummaryBatch)
+	_, err = taskSummaryResults.Exec()
+	if err != nil {
+		return err
+	}
+	err = taskSummaryResults.Close()
 	if err != nil {
 		return err
 	}

@@ -22,10 +22,23 @@ CREATE TABLE tasks(
 
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
+
+CREATE TABLE task_summaries(
+    id TEXT NOT NULL UNIQUE PRIMARY KEY,
+    user_id TEXT UNIQUE NOT NULL,
+
+    task_count BIGINT DEFAULT 0,
+
+    created_at TIMESTAMPTZ DEFAULT NOW(),
+    updated_at TIMESTAMPTZ DEFAULT NULL,
+
+    FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
+)
 -- +goose StatementEnd
 
 -- +goose Down
 -- +goose StatementBegin
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS tasks CASCADE;
+DROP TABLE IF EXISTS task_summaries CASCADE;
 -- +goose StatementEnd

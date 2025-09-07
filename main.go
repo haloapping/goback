@@ -45,6 +45,12 @@ func main() {
 	userHandler := user.NewHandler(userService)
 	user.Router(r.Group("/users"), userHandler)
 
+	// go func() {
+	// 	err = cronjob.UpdateTaskSummary(context.Background(), pool)
+	// 	if err != nil {
+	// 		fmt.Println(err)
+	// 	}
+	// }()
 	taskRepo := task.NewRepository(pool)
 	taskService := task.NewService(taskRepo)
 	taskHandler := task.NewHandler(taskService)

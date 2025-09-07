@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"flag"
 	"log"
 	"math/rand/v2"
 
@@ -28,7 +29,11 @@ func main() {
 	}
 	defer pool.Close()
 
-	err = GenerateFakeData(context.Background(), pool, 100, 100)
+	nUser := flag.Int("nuser", 10, "number of fake user")
+	nTask := flag.Int("ntask", 10, "number of fake task")
+	flag.Parse()
+
+	err = GenerateFakeData(context.Background(), pool, *nUser, *nTask)
 	if err != nil {
 		panic(err)
 	}

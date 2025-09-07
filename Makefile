@@ -4,7 +4,7 @@ export $(shell sed 's/=.*//' .env)
 
 # ===== DATABASE SEEDER ===== #
 dbseed:
-	go run db/seeder/seed.go
+	go run db/seeder/seed.go --nuser=$(nuser) --ntask=$(ntask)
 
 # ===== GOOSE DATABASE MIGRATIONS ===== #
 MIGRATIONS_DIR=./db/migration
@@ -34,7 +34,8 @@ dbredo:
 # reset all (down all, then up all)
 # usage: make dbreset
 dbreset:
-	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" reset
+	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" down
+	goose -dir $(MIGRATIONS_DIR) $(DB_DRIVER) "$(DB_URL)" up
 
 # print current DB version
 # usage: make dbversion

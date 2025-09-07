@@ -163,3 +163,29 @@
 {"level":"info","time":"2025-09-06T20:59:42+07:00","message":"success to retrieve task by user id"}
 {"level":"info","time":"2025-09-06T20:59:43+07:00","message":"success to retrieve task by user id"}
 {"level":"info","time":"2025-09-06T21:00:11+07:00","message":"success to retrieve task by user id"}
+{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-06T23:51:19+07:00","message":"validation"}
+{"level":"info","time":"2025-09-06T23:51:23+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-06T23:51:36+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-06T23:56:51+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-06T23:57:19+07:00","message":"task is created"}
+{"level":"info","time":"2025-09-07T09:07:49+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T09:09:52+07:00","message":"success to retrieve all tasks"}
+{"level":"error","time":"2025-09-07T09:10:29+07:00","message":"no rows in result set"}
+{"level":"error","time":"2025-09-07T09:10:30+07:00","message":"no rows in result set"}
+{"level":"error","time":"2025-09-07T09:10:40+07:00","message":"no rows in result set"}
+{"level":"error","time":"2025-09-07T09:10:41+07:00","message":"no rows in result set"}
+{"level":"error","time":"2025-09-07T09:10:41+07:00","message":"no rows in result set"}
+{"level":"info","time":"2025-09-07T09:18:02+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T09:18:33+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T09:18:33+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T09:21:01+07:00","message":"success to retrieve all tasks"}
+{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T09:21:13+07:00","message":"validation"}
+{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T09:24:28+07:00","message":"validation"}
+{"level":"info","time":"2025-09-07T09:24:34+07:00","message":"success to retrieve task by user id"}
+{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T09:26:42+07:00","message":"validation"}
+{"level":"info","time":"2025-09-07T09:26:46+07:00","message":"success to retrieve task by user id"}
+{"level":"info","time":"2025-09-07T09:29:20+07:00","message":"success to retrieve task by user id"}
+{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T09:49:11+07:00","message":"validation"}
+{"level":"info","time":"2025-09-07T09:49:17+07:00","message":"success to retrieve task by user id"}
+{"level":"info","time":"2025-09-07T12:05:28+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:05:44+07:00","message":"success to retrieve all tasks"}

@@ -9,6 +9,7 @@ import (
 
 	"github.com/brianvoe/gofakeit/v7"
 	"github.com/goback/db"
+	"github.com/jackc/pgx/v5"
 	"github.com/jackc/pgx/v5/pgxpool"
 	"github.com/joho/godotenv"
 	"github.com/oklog/ulid/v2"
@@ -36,68 +37,64 @@ func main() {
 	}
 	defer pool.Close()
 
-	err = GenerateFakeData(context.Background(), pool, 500, 500)
+	err = GenerateFakeData(context.Background(), pool, 100, 100)
 	if err != nil {
 		panic(err)
 	}
 }
 
 func GenerateFakeData(ctx context.Context, pool *pgxpool.Pool, nUser int, nTask int) error {
-	userTx, err := pool.Begin(ctx)
-	if err != nil {
-		userTx.Rollback(ctx)
-
-		return err
-	}
-
-	userIdxs := make([]string, 0)
+	// Batch insert users
+	userBatch := &pgx.Batch{}
+	userIdxs := make([]string, 0, nUser)
 	for range nUser {
-		q := `
-			INSERT INTO users(id, username, password)
-			VALUES($1, $2, $3)
-			RETURNING id;
-		`
+		id := ulid.Make().String()
+		username := gofakeit.Username()
 		hashPassword, err := bcrypt.GenerateFromPassword([]byte(gofakeit.Password(true, true, true, true, false, 8)), bcrypt.DefaultCost)
 		if err != nil {
-			userTx.Rollback(ctx)
-
 			return err
 		}
-		row := userTx.QueryRow(ctx, q, ulid.Make().String(), gofakeit.Username(), string(hashPassword))
-		var id string
-		err = row.Scan(&id)
-		if err != nil {
-			userTx.Rollback(ctx)
-
-			return err
-		}
+		userBatch.Queue(
+			`INSERT INTO users(id, username, password) VALUES($1, $2, $3) RETURNING id;`,
+			id, username, string(hashPassword),
+		)
 		userIdxs = append(userIdxs, id)
 	}
-	userTx.Commit(ctx)
 
-	taskTx, err := pool.Begin(ctx)
-	if err != nil {
-		taskTx.Rollback(ctx)
-
-		return err
-	}
-	for range nTask {
-		q := `
-			INSERT INTO tasks(id, user_id, title, description)
-			VALUES($1, $2, $3, $4)
-			RETURNING id;
-		`
-		randomUserIdx := rand.IntN(len(userIdxs))
-		row := taskTx.QueryRow(ctx, q, ulid.Make().String(), userIdxs[randomUserIdx], gofakeit.Sentence(3), gofakeit.Sentence(15))
+	userResults := pool.SendBatch(ctx, userBatch)
+	for range nUser {
 		var id string
-		err := row.Scan(&id)
-		if err != nil {
-			taskTx.Rollback(ctx)
-
+		if err := userResults.QueryRow().Scan(&id); err != nil {
+			userResults.Close()
 			return err
 		}
 	}
-	taskTx.Commit(ctx)
+	if err := userResults.Close(); err != nil {
+		return err
+	}
+
+	// Batch insert tasks
+	taskBatch := &pgx.Batch{}
+	for range nTask {
+		id := ulid.Make().String()
+		randomUserIdx := rand.IntN(len(userIdxs))
+		taskBatch.Queue(
+			`INSERT INTO tasks(id, user_id, title, description) VALUES($1, $2, $3, $4) RETURNING id;`,
+			id, userIdxs[randomUserIdx], gofakeit.Sentence(3), gofakeit.Sentence(15),
+		)
+	}
+
+	taskResults := pool.SendBatch(ctx, taskBatch)
+	for range nTask {
+		var id string
+		if err := taskResults.QueryRow().Scan(&id); err != nil {
+			taskResults.Close()
+			return err
+		}
+	}
+	if err := taskResults.Close(); err != nil {
+		return err
+	}
 
 	return nil
 }

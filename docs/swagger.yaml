@@ -217,7 +217,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: Find all tasks
+      description: Get all tasks
       parameters:
       - default: 1
         description: offset
@@ -238,7 +238,7 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/api.MultipleDataResp-task_Task'
-      summary: Find all tasks
+      summary: Get all tasks
       tags:
       - tasks
     post:
@@ -286,33 +286,21 @@ paths:
     get:
       consumes:
       - application/json
-      description: Find all tasks by user id
+      description: Get task by id
       parameters:
-      - description: user id
+      - description: task id
         in: path
         name: id
         required: true
         type: string
-      - default: 1
-        description: offset
-        in: query
-        name: offset
-        required: true
-        type: integer
-      - default: 15
-        description: limit
-        in: query
-        name: limit
-        required: true
-        type: integer
       produces:
       - application/json
       responses:
         "200":
           description: OK
           schema:
-            $ref: '#/definitions/api.MultipleDataResp-task_Task'
-      summary: Find all tasks by user id
+            $ref: '#/definitions/api.SingleDataResp-task_Task'
+      summary: Get task by id
       tags:
       - tasks
     patch:
@@ -339,6 +327,39 @@ paths:
           schema:
             $ref: '#/definitions/api.SingleDataResp-task_Task'
       summary: Update task by id
+      tags:
+      - tasks
+  /tasks/{userId}:
+    get:
+      consumes:
+      - application/json
+      description: Get all tasks by user id
+      parameters:
+      - description: user id
+        in: path
+        name: userId
+        required: true
+        type: string
+      - default: 1
+        description: offset
+        in: query
+        name: offset
+        required: true
+        type: integer
+      - default: 15
+        description: limit
+        in: query
+        name: limit
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/api.MultipleDataResp-task_Task'
+      summary: Get all tasks by user id
       tags:
       - tasks
   /users/biodata/{id}:

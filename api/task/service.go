@@ -23,8 +23,8 @@ func (s *Service) Add(c echo.Context, req AddReq) (Task, error) {
 	return item, nil
 }
 
-func (s *Service) FindById(c echo.Context, id string) (Task, error) {
-	item, err := s.Repository.FindById(c, id)
+func (s *Service) GetById(c echo.Context, id string) (Task, error) {
+	item, err := s.Repository.GetById(c, id)
 	if err != nil {
 		return Task{}, err
 	}
@@ -32,8 +32,8 @@ func (s *Service) FindById(c echo.Context, id string) (Task, error) {
 	return item, nil
 }
 
-func (s *Service) FindAllByUserId(c echo.Context, id string, limit int, offset int) (ut []UserTask, err error) {
-	item, err := s.Repository.FindAllByUserId(c, id, limit, offset)
+func (s *Service) GetAllByUserId(c echo.Context, id string, limit int, offset int) (ut []UserTask, err error) {
+	item, err := s.Repository.GetAllByUserId(c, id, limit, offset)
 	if err != nil {
 		return []UserTask{}, err
 	}
@@ -41,8 +41,8 @@ func (s *Service) FindAllByUserId(c echo.Context, id string, limit int, offset i
 	return item, nil
 }
 
-func (s *Service) FindAll(c echo.Context, limit int, offset int) (t []Task, err error) {
-	items, err := s.Repository.FindAll(c, limit, offset)
+func (s *Service) GetAll(c echo.Context, limit int, offset int) (t []Task, err error) {
+	items, err := s.Repository.GetAll(c, limit, offset)
 	if err != nil {
 		return []Task{}, err
 	}

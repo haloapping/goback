@@ -78,17 +78,17 @@ func (h *Handler) Add(c echo.Context) error {
 	)
 }
 
-// Find task by id
+// Get task by id
 //
-//	@Summary		Find task by id
-//	@Description	Find task by id
+//	@Summary		Get task by id
+//	@Description	Get task by id
 //	@Tags			tasks
 //	@Accept			json
 //	@Produce		json
 //	@Param			id				path		string	true	"task id"
 //	@Success		200				{object}	api.SingleDataResp[Task]
 //	@Router			/tasks/{id} 	[get]
-func (h *Handler) FindById(c echo.Context) error {
+func (h *Handler) GetById(c echo.Context) error {
 	id := c.Param("id")
 	if id == "{id}" {
 		validation := map[string][]string{
@@ -105,7 +105,7 @@ func (h *Handler) FindById(c echo.Context) error {
 		)
 	}
 
-	data, err := h.Service.FindById(c, id)
+	data, err := h.Service.GetById(c, id)
 	if err != nil {
 		zlog.Error().Msg(err.Error())
 
@@ -128,23 +128,23 @@ func (h *Handler) FindById(c echo.Context) error {
 	)
 }
 
-// Find all tasks by user id
+// Get all tasks by user id
 //
-//	@Summary		Find all tasks by user id
-//	@Description	Find all tasks by user id
+//	@Summary		Get all tasks by user id
+//	@Description	Get all tasks by user id
 //	@Tags			tasks
 //	@Accept			json
 //	@Produce		json
-//	@Param			id				path		string	true	"user id"
-//	@Param			offset			query		int		true	"offset"	default(1)
-//	@Param			limit			query		int		true	"limit"		default(15)
-//	@Success		200				{object}	api.MultipleDataResp[Task]
-//	@Router			/tasks/{id} 	[get]
-func (h *Handler) FindAllByUserId(c echo.Context) error {
+//	@Param			userId				path		string	true	"user id"
+//	@Param			offset				query		int		true	"offset"	default(1)
+//	@Param			limit				query		int		true	"limit"		default(15)
+//	@Success		200					{object}	api.MultipleDataResp[Task]
+//	@Router			/tasks/{userId} 	[get]
+func (h *Handler) GetAllByUserId(c echo.Context) error {
 	validationErr := make(map[string][]string)
 
-	id := c.Param("id")
-	if id == "{id}" {
+	id := c.Param("userId")
+	if id == "{userId}" {
 		validationErr["id"] = append(validationErr["id"], "cannot empty")
 	}
 
@@ -189,7 +189,7 @@ func (h *Handler) FindAllByUserId(c echo.Context) error {
 		)
 	}
 
-	data, err := h.Service.FindAllByUserId(c, id, limit, offset)
+	data, err := h.Service.GetAllByUserId(c, id, limit, offset)
 	if err != nil {
 		zlog.Error().Msg(err.Error())
 
@@ -213,10 +213,10 @@ func (h *Handler) FindAllByUserId(c echo.Context) error {
 	)
 }
 
-// Find all tasks
+// Get all tasks
 //
-//	@Summary		Find all tasks
-//	@Description	Find all tasks
+//	@Summary		Get all tasks
+//	@Description	Get all tasks
 //	@Tags			tasks
 //	@Accept			json
 //	@Produce		json
@@ -224,7 +224,7 @@ func (h *Handler) FindAllByUserId(c echo.Context) error {
 //	@Param			limit		query		int	true	"limit"		default(15)
 //	@Success		200			{object}	api.MultipleDataResp[Task]
 //	@Router			/tasks   	[get]
-func (h *Handler) FindAll(c echo.Context) error {
+func (h *Handler) GetAll(c echo.Context) error {
 	validationErr := make(map[string][]string)
 
 	offsetStr := c.QueryParam("offset")
@@ -268,7 +268,7 @@ func (h *Handler) FindAll(c echo.Context) error {
 		)
 	}
 
-	items, err := h.Service.FindAll(c, limit, offset)
+	items, err := h.Service.GetAll(c, limit, offset)
 	if err != nil {
 		zlog.Error().Msg(err.Error())
 

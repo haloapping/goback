@@ -37,16 +37,15 @@ func (r *Repository) Add(c echo.Context, req AddReq) (Task, error) {
 	var t Task
 	err = row.Scan(&t.Id, &t.UserId, &t.Title, &t.Description, &t.CreatedAt, &t.UpdatedAt)
 	if err != nil {
-		tx.Rollback(ctx)
-
 		return Task{}, err
 	}
+
 	tx.Commit(ctx)
 
 	return t, nil
 }
 
-func (r *Repository) FindById(c echo.Context, id string) (Task, error) {
+func (r *Repository) GetById(c echo.Context, id string) (Task, error) {
 	ctx := c.Request().Context()
 	tx, err := r.Pool.Begin(ctx)
 	if err != nil {
@@ -72,7 +71,7 @@ func (r *Repository) FindById(c echo.Context, id string) (Task, error) {
 	return t, nil
 }
 
-func (r *Repository) FindAllByUserId(c echo.Context, id string, limit int, offset int) (ut []UserTask, err error) {
+func (r *Repository) GetAllByUserId(c echo.Context, id string, limit int, offset int) (ut []UserTask, err error) {
 	ctx := c.Request().Context()
 	tx, err := r.Pool.Begin(ctx)
 	if err != nil {
@@ -82,9 +81,12 @@ func (r *Repository) FindAllByUserId(c echo.Context, id string, limit int, offse
 	}
 
 	q := `
-		SELECT COUNT(t.id) FROM tasks t 
-		LEFT JOIN users u ON t.user_id = u.id
-		WHERE u.id = $1;
+		SELECT COUNT(*)
+		FROM(
+			SELECT 1 FROM tasks t 
+			LEFT JOIN users u ON t.user_id = u.id
+			WHERE u.id = $1
+		);
 	`
 	row := tx.QueryRow(ctx, q, id)
 	var count int
@@ -94,8 +96,13 @@ func (r *Repository) FindAllByUserId(c echo.Context, id string, limit int, offse
 
 		return []UserTask{}, err
 	}
+
 	if count == 0 {
 		return []UserTask{}, nil
+	}
+
+	if count < limit {
+		limit = count
 	}
 
 	q = `
@@ -124,7 +131,7 @@ func (r *Repository) FindAllByUserId(c echo.Context, id string, limit int, offse
 	return userTasks, nil
 }
 
-func (r *Repository) FindAll(c echo.Context, limit int, offset int) (t []Task, err error) {
+func (r *Repository) GetAll(c echo.Context, limit int, offset int) (t []Task, err error) {
 	ctx := c.Request().Context()
 	tx, err := r.Pool.Begin(ctx)
 	if err != nil {
@@ -134,10 +141,14 @@ func (r *Repository) FindAll(c echo.Context, limit int, offset int) (t []Task, e
 	}
 
 	q := `
-		SELECT COUNT(id)
-		FROM tasks;
+		SELECT COUNT(*)
+		FROM (
+			SELECT 1
+			FROM tasks
+			LIMIT $1 OFFSET $2
+		);
 	`
-	row := tx.QueryRow(ctx, q)
+	row := tx.QueryRow(ctx, q, limit, offset)
 	var count int
 	err = row.Scan(&count)
 	if err != nil {
@@ -145,6 +156,7 @@ func (r *Repository) FindAll(c echo.Context, limit int, offset int) (t []Task, e
 
 		return []Task{}, err
 	}
+	fmt.Println("Count:", count)
 
 	q = `
 		SELECT * FROM tasks

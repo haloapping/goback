@@ -22,7 +22,7 @@ const docTemplate = `{
     "paths": {
         "/tasks": {
             "get": {
-                "description": "Find all tasks",
+                "description": "Get all tasks",
                 "consumes": [
                     "application/json"
                 ],
@@ -32,7 +32,7 @@ const docTemplate = `{
                 "tags": [
                     "tasks"
                 ],
-                "summary": "Find all tasks",
+                "summary": "Get all tasks",
                 "parameters": [
                     {
                         "type": "integer",
@@ -95,7 +95,7 @@ const docTemplate = `{
         },
         "/tasks/{id}": {
             "get": {
-                "description": "Find all tasks by user id",
+                "description": "Get task by id",
                 "consumes": [
                     "application/json"
                 ],
@@ -105,29 +105,13 @@ const docTemplate = `{
                 "tags": [
                     "tasks"
                 ],
-                "summary": "Find all tasks by user id",
+                "summary": "Get task by id",
                 "parameters": [
                     {
                         "type": "string",
-                        "description": "user id",
+                        "description": "task id",
                         "name": "id",
                         "in": "path",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "default": 1,
-                        "description": "offset",
-                        "name": "offset",
-                        "in": "query",
-                        "required": true
-                    },
-                    {
-                        "type": "integer",
-                        "default": 15,
-                        "description": "limit",
-                        "name": "limit",
-                        "in": "query",
                         "required": true
                     }
                 ],
@@ -135,7 +119,7 @@ const docTemplate = `{
                     "200": {
                         "description": "OK",
                         "schema": {
-                            "$ref": "#/definitions/api.MultipleDataResp-task_Task"
+                            "$ref": "#/definitions/api.SingleDataResp-task_Task"
                         }
                     }
                 }
@@ -205,6 +189,54 @@ const docTemplate = `{
                         "description": "OK",
                         "schema": {
                             "$ref": "#/definitions/api.SingleDataResp-task_Task"
+                        }
+                    }
+                }
+            }
+        },
+        "/tasks/{userId}": {
+            "get": {
+                "description": "Get all tasks by user id",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "tasks"
+                ],
+                "summary": "Get all tasks by user id",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "user id",
+                        "name": "userId",
+                        "in": "path",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 1,
+                        "description": "offset",
+                        "name": "offset",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "type": "integer",
+                        "default": 15,
+                        "description": "limit",
+                        "name": "limit",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/api.MultipleDataResp-task_Task"
                         }
                     }
                 }

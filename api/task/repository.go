@@ -113,6 +113,12 @@ func (r *Repository) GetAllByUserId(c echo.Context, id string, limit int, offset
 		OFFSET $3;
 	`
 	rows, err := tx.Query(ctx, q, id, limit, offset)
+	if err != nil {
+		tx.Rollback(ctx)
+
+		return []UserTask{}, err
+	}
+	defer rows.Close()
 	idx := 0
 	userTasks := make([]UserTask, count)
 	for rows.Next() {
@@ -164,6 +170,12 @@ func (r *Repository) GetAll(c echo.Context, limit int, offset int) (t []Task, er
 		OFFSET $2;
 	`
 	rows, err := tx.Query(ctx, q, limit, offset)
+	if err != nil {
+		tx.Rollback(ctx)
+
+		return []Task{}, err
+	}
+	defer rows.Close()
 	idx := 0
 	items := make([]Task, count)
 	for rows.Next() {

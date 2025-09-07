@@ -189,3 +189,17 @@
 {"level":"info","time":"2025-09-07T09:49:17+07:00","message":"success to retrieve task by user id"}
 {"level":"info","time":"2025-09-07T12:05:28+07:00","message":"success to retrieve all tasks"}
 {"level":"info","time":"2025-09-07T12:05:44+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:34+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:35+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:36+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:36+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:36+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:36+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
+{"level":"info","time":"2025-09-07T12:10:37+07:00","message":"success to retrieve all tasks"}
+{"level":"info","validation":{"limit":["cannot empty"],"offset":["cannot empty"]},"time":"2025-09-07T12:10:47+07:00","message":"validation"}
+{"level":"info","time":"2025-09-07T12:10:51+07:00","message":"success to retrieve task by user id"}
